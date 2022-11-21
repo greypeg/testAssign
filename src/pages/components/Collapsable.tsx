@@ -73,7 +73,7 @@ const Collapsable = () => {
                     First Name
                   </label>
                   <input
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-lg rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="inline-full-name"
                     type="text"
                     {...register("firstname", { required: true })}
@@ -90,7 +90,7 @@ const Collapsable = () => {
                     Surname
                   </label>
                   <input
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-lg rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="surname-name"
                     type="text"
                     {...register("lastname", { required: true })}
@@ -105,21 +105,26 @@ const Collapsable = () => {
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
                     htmlFor="email-address"
                   >
-                    Email Address
+                    Email Address:
                   </label>
                   <input
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-lg rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="email-address"
                     type="email"
                     {...register("email", { required: true })}
                   />
                   <br></br>
                   {errors.email && (
-                    <span className="text-red-500">This field is required</span>
+                    <span className=" text-red-500">
+                      This field is required
+                    </span>
                   )}
                 </div>
                 <div>
-                  <button type="submit" className="bg-indigo-700 text-white">
+                  <button
+                    type="submit"
+                    className="h-6 w-40  rounded-lg bg-indigo-700 text-white"
+                  >
                     Next {" >"}
                   </button>
                 </div>
@@ -158,7 +163,7 @@ const Collapsable = () => {
                     Telephone Number
                   </label>
                   <input
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-lg rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="telephone"
                     type="tel"
                     {...register2("telephone", { required: true })}
@@ -191,13 +196,16 @@ const Collapsable = () => {
                   <input
                     type="date"
                     id="birthday"
+                    className="rounded-lg"
                     {...register2("birthday", { required: true })}
                   />
                 </div>
                 <div></div>
               </div>
-
-              <button type="submit" className="bg-indigo-700 text-white">
+              <button
+                type="submit"
+                className="h-6 w-40  rounded-lg bg-indigo-700 text-white"
+              >
                 Next {" >"}
               </button>
             </form>
@@ -242,7 +250,10 @@ const Collapsable = () => {
                   ></textarea>
                 </div>
                 <div>
-                  <button type="submit" className="bg-indigo-700 text-white">
+                  <button
+                    type="submit"
+                    className="h-6 w-40  rounded-lg bg-indigo-700 text-white"
+                  >
                     Next {" >"}
                   </button>
                 </div>
