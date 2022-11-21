@@ -7,7 +7,7 @@ export const t = initTRPC?.create()
 export const exampleRouter = router({
   submitData: t
   .procedure
-  // using zod schema to validate and infer input values
+    // using zod schema to validate and infer input values
   .input(
     z.object({
       name: z.string(),
