@@ -179,8 +179,13 @@ const Collapsable = () => {
                   </select>
                 </div>
                 <div className="md:w-3/3">
-                <label className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0" for="birthday">Date of birth</label>
-                <input type="date" id="birthday" name="birthday"/>
+                  <label
+                    className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
+                    for="birthday"
+                  >
+                    Date of birth
+                  </label>
+                  <input type="date" id="birthday" name="birthday" />
                 </div>
                 <div>
                   <button type="submit" className="bg-indigo-700 text-white">
@@ -221,13 +226,26 @@ const Collapsable = () => {
           </summary>
           <div className="p-4">
             {/*section 3 */}
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
-              praesentium officia nostrum iste eaque, explicabo sunt, voluptatum
-              mollitia corporis porro repudiandae. Eaque neque voluptatum sint
-              molestiae? Assumenda eligendi facilis reprehenderit.
-              <button className="bg-indigo-700 text-white">Next {" >"}</button>
-            </p>
+            <form>
+              <div className="grid grid-cols-2">
+                <div className="md:w-1/3">
+                  <label
+                    className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
+                    for="w3review"
+                  >
+                    Comments
+                  </label>
+                  <textarea id="w3review" name="w3review" rows={4} cols={50}>
+                   
+                  </textarea>
+                </div>
+                <div>
+                  <button type="submit" className="bg-indigo-700 text-white">
+                    Next {" >"}
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </details>
       </div>
