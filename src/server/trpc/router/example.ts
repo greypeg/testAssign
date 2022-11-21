@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z, ZodLazy } from "zod";
 import { initTRPC } from '@trpc/server'
 import { router, publicProcedure } from "../trpc";
 
@@ -11,6 +11,8 @@ export const exampleRouter = router({
   .input(
     z.object({
       name: z.string(),
+      surname: z.string(),
+      email: z.string(),
     })
   )
   .mutation(({ input }) => {
@@ -18,6 +20,8 @@ export const exampleRouter = router({
       return {
         user: {
           name: input.name,
+          email: input.email,
+          surname: input.surname
         },
       };
      })

@@ -6,7 +6,7 @@ import { trpc } from "../../utils/trpc";
 
 type FormValues = {
     firstname: string;
-    lastName: string;
+    surname: string;
     email: string;
     dateOfBirth: string;
     gender: string;
@@ -24,7 +24,7 @@ const Collapsable = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
-    mutation.mutate({name: data.firstname});
+    mutation.mutate({name: data.firstname, surname: data.surname, email: data.email});
     console.log(data);
   };
 
@@ -108,7 +108,7 @@ const Collapsable = () => {
                     className="w-fit appearance-none rounded-lg rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="surname-name"
                     type="text"
-                    {...register("lastname", { required: true })}
+                    {...register("surname", { required: true })}
                   />
                   <br></br>
                   {errors.lastname && (
