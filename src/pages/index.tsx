@@ -1,13 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
-
 import { trpc } from "../utils/trpc";
 import Collapsable from "./components/Collapsable";
 
 const Home: NextPage = () => {
-  const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
+
 
   return (
     <>
@@ -18,18 +15,6 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-[#D2E1FF]">
       <Collapsable />
-        <div className="container flex flex-col items-center justify-center gap-12 mx-5 my-5 px-4 py-16 ">
-        
-          
-           
-       
-        
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-            </p>
-            <AuthShowcase />
-          </div>
-        </div>
       </main>
     </>
   );
@@ -37,17 +22,3 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const AuthShowcase: React.FC = () => {
-  const { data: sessionData } = useSession();
-
-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined }
-  );
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-     
-    </div>
-  );
-};

@@ -53,6 +53,11 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  telephone     String?
+  surname       String?
+  comments      String?
+  dateOfBirth   String?
+  gender        String?
   accounts      Account[]
   sessions      Session[]
 }

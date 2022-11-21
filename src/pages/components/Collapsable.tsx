@@ -1,17 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler  } from "react-hook-form";
 import { useState } from "react";
+import { trpc } from "../../utils/trpc";
 
+type FormValues = {
+    firstname: string;
+    lastName: string;
+    email: string;
+    dateOfBirth: string;
+    gender: string;
+    tel: string;
+    comments : string;
+  };
 const Collapsable = () => {
+
+  const mutation = trpc.example.submitData.useMutation();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data: any) => {
-    console.log("hiiii");
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+    mutation.mutate({name: data.firstname});
     console.log(data);
   };
 
@@ -36,6 +49,7 @@ const Collapsable = () => {
     if (section === sectionNumber) return true;
     return false;
   };
+
 
   return (
     <div>
@@ -160,7 +174,7 @@ const Collapsable = () => {
               <div className="grid grid-cols-2">
                 <div className="md:w-1/3">
                   <label
-                    className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
+                   className="mb-1 w-64 block pr-4 font-bold text-gray-500 md:mb-0"
                     htmlFor="telephone"
                   >
                     Telephone Number

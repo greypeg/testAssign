@@ -1,16 +1,24 @@
 import { z } from "zod";
-
+import { initTRPC } from '@trpc/server'
 import { router, publicProcedure } from "../trpc";
 
+export const t = initTRPC?.create()
+
 export const exampleRouter = router({
-  hello: publicProcedure
-    .input(z.object({ text: z.string().nullish() }).nullish())
-    .query(({ input }) => {
+  submitData: t
+  .procedure
+  // using zod schema to validate and infer input values
+  .input(
+    z.object({
+      name: z.string(),
+    })
+  )
+  .mutation(({ input }) => {
+      // Here some login stuff would happen
       return {
-        greeting: `Hello ${input?.text ?? "world"}`,
+        user: {
+          name: input.name,
+        },
       };
-    }),
-  getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.example.findMany();
-  }),
-});
+     })
+})
