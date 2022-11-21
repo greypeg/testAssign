@@ -19,9 +19,6 @@ const Collapsable = () => {
     return false;
   };
 
-  const onToggle: any = (sectionNumber: number) => {
-    setSection(sectionNumber);
-  };
   return (
     <div>
       <div className="container mr-44 ml-44 py-16 px-12">
@@ -180,6 +177,10 @@ const Collapsable = () => {
                     <option value="male">male</option>
                     <option value="other">other</option>
                   </select>
+                </div>
+                <div className="md:w-3/3">
+                <label className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0" for="birthday">Date of birth</label>
+                <input type="date" id="birthday" name="birthday"/>
                 </div>
                 <div>
                   <button type="submit" className="bg-indigo-700 text-white">
