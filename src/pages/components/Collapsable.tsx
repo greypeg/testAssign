@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const Collapsable = () => {
   const {
@@ -11,15 +12,34 @@ const Collapsable = () => {
   } = useForm();
   const onSubmit = (data: any) => console.log(data);
 
+  const [section, setSection] = useState(0);
+
+  const isOpen = (sectionNumber: number) => {
+    if (section === sectionNumber) return true;
+    return false;
+  };
+
+  const onToggle: any = (sectionNumber: number) => {
+    setSection(sectionNumber);
+  };
   return (
     <div>
       <div className="container mr-44 ml-44 py-16 px-12">
-        <details className="group mb-4 rounded bg-white shadow">
+        <details
+          className="group mb-4 rounded bg-white shadow"
+          open={isOpen(0)}
+          id="0"
+        >
           <summary
             className="relative flex cursor-pointer list-none flex-wrap
     items-center rounded focus-visible:outline-none
     focus-visible:ring focus-visible:ring-pink-500 group-open:z-[1] group-open:rounded-b-none
     "
+            onClick={(e) => {
+              e.preventDefault();
+              if (section === 0) setSection(-1);
+              else setSection(0);
+            }}
           >
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold text-white">
               Step 1: Your details
@@ -27,12 +47,13 @@ const Collapsable = () => {
             <div className="flex w-10 items-center justify-center">
               <div
                 className="ml-2 origin-left border-8 border-transparent
-        border-l-gray-600 transition-transform group-open:rotate-90
-        "
+        border-l-gray-600 transition-transform group-open:rotate-90"
               ></div>
             </div>
           </summary>
           <div className="p-4">
+            {/*section 1 */}
+
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-2">
                 <div className="md:w-1/3">
@@ -90,19 +111,28 @@ const Collapsable = () => {
                 </div>
                 <div>
                   <button type="submit" className="bg-indigo-700 text-white">
-                    Next
+                    Next {" >"}
                   </button>
                 </div>
               </div>
             </form>
           </div>
         </details>
-        <details className="group mb-4 rounded bg-white shadow">
+        <details
+          className="group mb-4 rounded bg-white shadow"
+          open={isOpen(1)}
+          id="1"
+        >
           <summary
             className="relative flex cursor-pointer list-none flex-wrap
     items-center rounded focus-visible:outline-none
     focus-visible:ring focus-visible:ring-pink-500 group-open:z-[1] group-open:rounded-b-none
     "
+            onClick={(e) => {
+              e.preventDefault();
+              if (section === 1) setSection(-1);
+              else setSection(1);
+            }}
           >
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold  text-white">
               Step 2: More comments
@@ -116,6 +146,8 @@ const Collapsable = () => {
             </div>
           </summary>
           <div className="p-4">
+            {/*section 2 */}
+
             <form>
               <div className="grid grid-cols-2">
                 <div className="md:w-1/3">
@@ -137,7 +169,7 @@ const Collapsable = () => {
                   )}
                 </div>
                 <div className="md:w-2/3">
-                <label
+                  <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
                     for="gender"
                   >
@@ -149,17 +181,31 @@ const Collapsable = () => {
                     <option value="other">other</option>
                   </select>
                 </div>
+                <div>
+                  <button type="submit" className="bg-indigo-700 text-white">
+                    Next {" >"}
+                  </button>
+                </div>
               </div>
             </form>
           </div>
         </details>
 
-        <details className="group mb-4 rounded bg-white shadow">
+        <details
+          className="group mb-4 rounded bg-white shadow"
+          open={isOpen(2)}
+          id="2"
+        >
           <summary
             className="relative flex cursor-pointer list-none flex-wrap
     items-center rounded focus-visible:outline-none
     focus-visible:ring focus-visible:ring-pink-500 group-open:z-[1] group-open:rounded-b-none
     "
+            onClick={(e) => {
+              e.preventDefault();
+              if (section === 2) setSection(-1);
+              else setSection(2);
+            }}
           >
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold  text-white">
               Step 3: Final comments
@@ -173,12 +219,13 @@ const Collapsable = () => {
             </div>
           </summary>
           <div className="p-4">
+            {/*section 3 */}
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum
               praesentium officia nostrum iste eaque, explicabo sunt, voluptatum
               mollitia corporis porro repudiandae. Eaque neque voluptatum sint
               molestiae? Assumenda eligendi facilis reprehenderit.
-              <button className="bg-indigo-700 text-white">Next</button>
+              <button className="bg-indigo-700 text-white">Next {" >"}</button>
             </p>
           </div>
         </details>
