@@ -17,12 +17,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <div className="min-h-screen bg-slate-100 text-gray-600">
+        <div className="container flex flex-col items-center justify-center gap-12 mx-5 my-5 px-4 py-16 ">
+        
+          
               <Collapsable />
-            </div>
-          </div>
+       
+        
           <div className="flex flex-col items-center gap-2">
             <p className="text-2xl text-white">
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
