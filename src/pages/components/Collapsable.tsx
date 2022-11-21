@@ -39,9 +39,9 @@ const Collapsable = () => {
 
   return (
     <div>
-      <div className="container mr-44 ml-44 rounded-lg bg-white py-4 px-4 shadow-xl">
+      <div className="container rounded-lg bg-white py-4 px-4 shadow-xl">
         <details
-          className="group mb-4 rounded bg-white bg-[#DEDEDE] shadow"
+          className="group mb-2 rounded bg-white bg-[#DEDEDE] shadow"
           open={isOpen(0)}
           id="0"
         >
@@ -64,8 +64,8 @@ const Collapsable = () => {
             {/*section 1 */}
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2">
-                <div className="md:w-1/3">
+              <div className="grid grid-cols-2 gap-0">
+                <div className="md:w-1/">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
                     htmlFor="inline-full-name"
@@ -78,6 +78,7 @@ const Collapsable = () => {
                     type="text"
                     {...register("firstname", { required: true })}
                   />
+                  <br></br>
                   {errors.firstname && (
                     <span className="text-red-500">This field is required</span>
                   )}
@@ -120,10 +121,12 @@ const Collapsable = () => {
                     </span>
                   )}
                 </div>
-                <div>
+              </div>
+              <div className="grid grid-cols-6 gap-4">
+                <div className="col-span-1 col-end-7">
                   <button
                     type="submit"
-                    className="h-6 w-40  rounded-lg bg-indigo-700 text-white"
+                    className="h-8 w-36 rounded-lg bg-indigo-700 text-white"
                   >
                     Next {" >"}
                   </button>
@@ -133,7 +136,7 @@ const Collapsable = () => {
           </div>
         </details>
         <details
-          className="group mb-4 rounded bg-white bg-[#DEDEDE] shadow"
+          className="group mb-2 rounded bg-white bg-[#DEDEDE] shadow"
           open={isOpen(1)}
           id="1"
         >
@@ -181,6 +184,7 @@ const Collapsable = () => {
                     Gender
                   </label>
                   <select {...register2("gender")}>
+                  <option value="" disabled selected hidden>Select Gender</option>
                     <option value="female">female</option>
                     <option value="male">male</option>
                     <option value="other">other</option>
@@ -202,18 +206,22 @@ const Collapsable = () => {
                 </div>
                 <div></div>
               </div>
-              <button
-                type="submit"
-                className="h-6 w-40  rounded-lg bg-indigo-700 text-white"
-              >
-                Next {" >"}
-              </button>
+              <div className="grid grid-cols-6 gap-4">
+                <div className="col-span-1 col-end-7">
+                  <button
+                    type="submit"
+                    className="h-8 w-36 rounded-lg bg-indigo-700 text-white"
+                  >
+                    Next {" >"}
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
         </details>
 
         <details
-          className="group mb-4 rounded bg-white bg-[#DEDEDE] shadow"
+          className="group mb-2 rounded bg-white bg-[#DEDEDE] shadow"
           open={isOpen(2)}
           id="2"
         >
@@ -235,7 +243,8 @@ const Collapsable = () => {
           <div className="p-4">
             <form onSubmit={handleSubmit3(onSubmit)}>
               <div className="grid grid-cols-2">
-                <div className="md:w-1/3">
+                
+                <div className="">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
                     htmlFor="comments"
@@ -249,10 +258,10 @@ const Collapsable = () => {
                     {...register3("comments", { required: true })}
                   ></textarea>
                 </div>
-                <div>
+                <div className="col-end-7 col-span-2 row-end-3">
                   <button
                     type="submit"
-                    className="h-6 w-40  rounded-lg bg-indigo-700 text-white"
+                    className="h-8 w-36 rounded-lg bg-indigo-700 text-white"
                   >
                     Next {" >"}
                   </button>
