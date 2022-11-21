@@ -21,9 +21,9 @@ const Collapsable = () => {
 
   return (
     <div>
-      <div className="container mr-44 ml-44 py-16 px-12">
+      <div className="container mr-44 ml-44 py-4 px-4 bg-white shadow-xl rounded-lg">
         <details
-          className="group mb-4 rounded bg-white shadow"
+          className="group mb-4 rounded bg-white shadow bg-[#DEDEDE]"
           open={isOpen(0)}
           id="0"
         >
@@ -41,12 +41,7 @@ const Collapsable = () => {
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold text-white">
               Step 1: Your details
             </h3>
-            <div className="flex w-10 items-center justify-center">
-              <div
-                className="ml-2 origin-left border-8 border-transparent
-        border-l-gray-600 transition-transform group-open:rotate-90"
-              ></div>
-            </div>
+         
           </summary>
           <div className="p-4">
             {/*section 1 */}
@@ -62,7 +57,7 @@ const Collapsable = () => {
                   </label>
                   <input
                     {...register("firstname", { required: true })}
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="inline-full-name"
                     type="text"
                   />
@@ -79,7 +74,7 @@ const Collapsable = () => {
                   </label>
                   <input
                     {...register("lastname", { required: true })}
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="surname-name"
                     type="text"
                   />
@@ -97,7 +92,7 @@ const Collapsable = () => {
                   </label>
                   <input
                     {...register("email", { required: true })}
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="email-address"
                     type="email"
                   />
@@ -116,9 +111,10 @@ const Collapsable = () => {
           </div>
         </details>
         <details
-          className="group mb-4 rounded bg-white shadow"
+          className="group mb-4 rounded bg-white shadow bg-[#DEDEDE]"
           open={isOpen(1)}
           id="1"
+
         >
           <summary
             className="relative flex cursor-pointer list-none flex-wrap
@@ -134,13 +130,7 @@ const Collapsable = () => {
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold  text-white">
               Step 2: More comments
             </h3>
-            <div className="flex w-10 items-center justify-center">
-              <div
-                className="ml-2 origin-left border-8 border-transparent
-        border-l-gray-600 transition-transform group-open:rotate-90
-        "
-              ></div>
-            </div>
+          
           </summary>
           <div className="p-4">
             {/*section 2 */}
@@ -156,7 +146,7 @@ const Collapsable = () => {
                   </label>
                   <input
                     {...register("telephone", { required: true })}
-                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="telephone"
                     type="tel"
                   />
@@ -198,7 +188,7 @@ const Collapsable = () => {
         </details>
 
         <details
-          className="group mb-4 rounded bg-white shadow"
+          className="group mb-4 rounded bg-white shadow bg-[#DEDEDE]"
           open={isOpen(2)}
           id="2"
         >
@@ -216,13 +206,6 @@ const Collapsable = () => {
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold  text-white">
               Step 3: Final comments
             </h3>
-            <div className="flex w-10 items-center justify-center">
-              <div
-                className="ml-2 origin-left border-8 border-transparent
-        border-l-gray-600 transition-transform group-open:rotate-90
-        "
-              ></div>
-            </div>
           </summary>
           <div className="p-4">
             {/*section 3 */}
