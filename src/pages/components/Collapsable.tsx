@@ -10,8 +10,26 @@ const Collapsable = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => {
+    console.log("hiiii");
+    console.log(data);
+  };
 
+  const {
+    register: register2,
+    formState: { errors: errors2 },
+    handleSubmit: handleSubmit2,
+  } = useForm({
+    mode: "onBlur",
+  });
+
+  const {
+    register: register3,
+    formState: { errors: errors3 },
+    handleSubmit: handleSubmit3,
+  } = useForm({
+    mode: "onBlur",
+  });
   const [section, setSection] = useState(0);
 
   const isOpen = (sectionNumber: number) => {
@@ -21,9 +39,9 @@ const Collapsable = () => {
 
   return (
     <div>
-      <div className="container mr-44 ml-44 py-4 px-4 bg-white shadow-xl rounded-lg">
+      <div className="container mr-44 ml-44 rounded-lg bg-white py-4 px-4 shadow-xl">
         <details
-          className="group mb-4 rounded bg-white shadow bg-[#DEDEDE]"
+          className="group mb-4 rounded bg-white bg-[#DEDEDE] shadow"
           open={isOpen(0)}
           id="0"
         >
@@ -41,7 +59,6 @@ const Collapsable = () => {
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold text-white">
               Step 1: Your details
             </h3>
-         
           </summary>
           <div className="p-4">
             {/*section 1 */}
@@ -51,15 +68,15 @@ const Collapsable = () => {
                 <div className="md:w-1/3">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
-                    for="inline-full-name"
+                    htmlFor="inline-full-name"
                   >
                     First Name
                   </label>
                   <input
-                    {...register("firstname", { required: true })}
                     className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="inline-full-name"
                     type="text"
+                    {...register("firstname", { required: true })}
                   />
                   {errors.firstname && (
                     <span className="text-red-500">This field is required</span>
@@ -68,15 +85,15 @@ const Collapsable = () => {
                 <div className="md:w-2/3">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
-                    for="surname-name"
+                    htmlFor="surname-name"
                   >
                     Surname
                   </label>
                   <input
-                    {...register("lastname", { required: true })}
                     className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="surname-name"
                     type="text"
+                    {...register("lastname", { required: true })}
                   />
                   <br></br>
                   {errors.lastname && (
@@ -86,15 +103,15 @@ const Collapsable = () => {
                 <div className="md:w-3/3">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
-                    for="email-address"
+                    htmlFor="email-address"
                   >
                     Email Address
                   </label>
                   <input
-                    {...register("email", { required: true })}
                     className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="email-address"
                     type="email"
+                    {...register("email", { required: true })}
                   />
                   <br></br>
                   {errors.email && (
@@ -111,10 +128,9 @@ const Collapsable = () => {
           </div>
         </details>
         <details
-          className="group mb-4 rounded bg-white shadow bg-[#DEDEDE]"
+          className="group mb-4 rounded bg-white bg-[#DEDEDE] shadow"
           open={isOpen(1)}
           id="1"
-
         >
           <summary
             className="relative flex cursor-pointer list-none flex-wrap
@@ -130,39 +146,36 @@ const Collapsable = () => {
             <h3 className="flex flex-1 bg-yellow-400 p-4 font-semibold  text-white">
               Step 2: More comments
             </h3>
-          
           </summary>
           <div className="p-4">
-            {/*section 2 */}
-
-            <form>
+            <form onSubmit={handleSubmit2(onSubmit)}>
               <div className="grid grid-cols-2">
                 <div className="md:w-1/3">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
-                    for="telephone"
+                    htmlFor="telephone"
                   >
                     Telephone Number
                   </label>
                   <input
-                    {...register("telephone", { required: true })}
                     className="w-fit appearance-none rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="telephone"
                     type="tel"
+                    {...register2("telephone", { required: true })}
                   />
                   <br></br>
-                  {errors.email && (
+                  {errors2.email && (
                     <span className="text-red-500">This field is required</span>
                   )}
                 </div>
                 <div className="md:w-2/3">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
-                    for="gender"
+                    htmlFor="gender"
                   >
                     Gender
                   </label>
-                  <select {...register("gender")}>
+                  <select {...register2("gender")}>
                     <option value="female">female</option>
                     <option value="male">male</option>
                     <option value="other">other</option>
@@ -171,24 +184,28 @@ const Collapsable = () => {
                 <div className="md:w-3/3">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
-                    for="birthday"
+                    htmlFor="birthday"
                   >
                     Date of birth
                   </label>
-                  <input type="date" id="birthday" name="birthday" />
+                  <input
+                    type="date"
+                    id="birthday"
+                    {...register2("birthday", { required: true })}
+                  />
                 </div>
-                <div>
-                  <button type="submit" className="bg-indigo-700 text-white">
-                    Next {" >"}
-                  </button>
-                </div>
+                <div></div>
               </div>
+
+              <button type="submit" className="bg-indigo-700 text-white">
+                Next {" >"}
+              </button>
             </form>
           </div>
         </details>
 
         <details
-          className="group mb-4 rounded bg-white shadow bg-[#DEDEDE]"
+          className="group mb-4 rounded bg-white bg-[#DEDEDE] shadow"
           open={isOpen(2)}
           id="2"
         >
@@ -208,19 +225,21 @@ const Collapsable = () => {
             </h3>
           </summary>
           <div className="p-4">
-            {/*section 3 */}
-            <form>
+            <form onSubmit={handleSubmit3(onSubmit)}>
               <div className="grid grid-cols-2">
                 <div className="md:w-1/3">
                   <label
                     className="mb-1 block pr-4 font-bold text-gray-500 md:mb-0"
-                    for="w3review"
+                    htmlFor="comments"
                   >
                     Comments
                   </label>
-                  <textarea id="w3review" name="w3review" rows={4} cols={50}>
-                   
-                  </textarea>
+                  <textarea
+                    id="comments"
+                    rows={4}
+                    cols={50}
+                    {...register3("comments", { required: true })}
+                  ></textarea>
                 </div>
                 <div>
                   <button type="submit" className="bg-indigo-700 text-white">
