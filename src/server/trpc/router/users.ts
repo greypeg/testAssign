@@ -20,7 +20,6 @@ export const usersRouter = router({
       })
     )
     .mutation(({ input, ctx }) => {
-      console.log("hiisdifsdif");
       const user = ctx.prisma.User.create({
         data: {
           ...input,
