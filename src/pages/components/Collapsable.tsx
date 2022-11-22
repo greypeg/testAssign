@@ -68,7 +68,7 @@ const Collapsable = () => {
               <div className="grid grid-cols-2 gap-0 w-7/12">
                 <div>
                   <label
-                    className="mb-1 block pr-4 font-bold text-black md:mb-0"
+                    className="mb-1 ml-1 block pr-4 font-semibold text-black md:mb-0"
                     htmlFor="inline-full-name"
                   >
                     First Name
@@ -86,7 +86,7 @@ const Collapsable = () => {
                 </div>
                 <div>
                   <label
-                    className="mb-1 block pr-4 font-bold text-black md:mb-0"
+                    className="mb-1 ml-1 block pr-4 font-semibold text-black md:mb-0"
                     htmlFor="surname-name"
                   >
                     Surname
@@ -104,7 +104,7 @@ const Collapsable = () => {
                 </div>
                 <div>
                   <label
-                    className="mb-1 block pr-4 font-bold text-black md:mb-0"
+                    className="mb-1 ml-1 block pr-4 font-semibold text-black md:mb-0"
                     htmlFor="email-address"
                   >
                     Email Address:
@@ -161,7 +161,7 @@ const Collapsable = () => {
               <div className="grid grid-cols-2  w-7/12">
                 <div className="md:w-1/3">
                   <label
-                    className="mb-1 block w-64 pr-4 font-bold text-black md:mb-0"
+                    className="mb-1 ml-1 block w-64 pr-4 font-semibold text-black md:mb-0"
                     htmlFor="telephone"
                   >
                     Telephone Number
@@ -179,7 +179,7 @@ const Collapsable = () => {
                 </div>
                 <div className="md:w-2/3">
                   <label
-                    className="mb-1 block pr-4 font-bold text-black md:mb-0"
+                    className="mb-1 ml-1 block ml-1 font-semibold pr-4 text-black md:mb-0"
                     htmlFor="gender"
                   >
                     Gender
@@ -198,7 +198,7 @@ const Collapsable = () => {
                 </div>
                 <div className="md:w-3/3">
                   <label
-                    className="mb-1 block pr-4 font-bold text-black md:mb-0"
+                    className="mb-1 ml-1 block pr-4 font-semibold text-black md:mb-0"
                     htmlFor="birthday"
                   >
                     Date of birth
@@ -309,7 +309,7 @@ const Collapsable = () => {
               <div className="grid grid-cols-2">
                 <div className="">
                   <label
-                    className="mb-1 ml-1 block pr-4 font-bold text-black md:mb-1"
+                    className="mb-1 ml-1 block pr-4 font-semibold text-black md:mb-1"
                     htmlFor="comments"
                   >
                     Comments
