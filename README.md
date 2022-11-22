@@ -6,7 +6,7 @@ git clone https://github.com/greypeg/testAssign.git
 
 Commands:
 
-cd test
+cd testAssign
 
 npx prisma db push
 
@@ -17,7 +17,7 @@ in your browser paste this: http://localhost:3000/
 2)To see if users are inside the db:
 open another terminal
 
-inside the project folder (folder name: test) run this command:
+inside the project folder (you should be in the folder with name: testAssign) run this command:
 
 npx prisma studio
 
