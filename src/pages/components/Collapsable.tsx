@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { trpc } from "../../utils/trpc";
-import { PrismaClient } from "@prisma/client";
 
 type FormValues = {
   firstname: string;
@@ -58,7 +57,7 @@ const Collapsable = () => {
               else setSection(0);
             }}
           >
-            <h3 className="flex flex-1 rounded-xl bg-yellow-400 p-4 font-semibold text-white">
+            <h3 className="flex flex-1 rounded-xl bg-[#F5B605] p-4 font-semibold text-white">
               Step 1: Your details
             </h3>
           </summary>
@@ -153,7 +152,7 @@ const Collapsable = () => {
               else setSection(1);
             }}
           >
-            <h3 className="flex flex-1 rounded-lg bg-yellow-400 p-4 font-semibold  text-white">
+            <h3 className="flex flex-1 rounded-lg bg-[#F5B605] p-4 font-semibold  text-white">
               Step 2: More comments
             </h3>
           </summary>
@@ -168,7 +167,7 @@ const Collapsable = () => {
                     Telephone Number
                   </label>
                   <input
-                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:outline-none"
+                    className="w-fit shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)] appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:outline-none"
                     id="telephone"
                     type="tel"
                     {...register("telephone", { required: true })}
@@ -301,7 +300,7 @@ const Collapsable = () => {
               else setSection(2);
             }}
           >
-            <h3 className="flex flex-1 rounded-xl bg-yellow-400 p-4 font-semibold  text-white">
+            <h3 className="flex flex-1 rounded-xl bg-[#F5B605 p-4 font-semibold  text-white">
               Step 3: Final comments
             </h3>
           </summary>
