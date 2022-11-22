@@ -65,8 +65,8 @@ const Collapsable = () => {
             {/*section 1 */}
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2 gap-0">
-                <div className="md:w-1/">
+              <div className="grid grid-cols-2 gap-0 w-7/12">
+                <div>
                   <label
                     className="mb-1 block pr-4 font-bold text-black md:mb-0"
                     htmlFor="inline-full-name"
@@ -84,7 +84,7 @@ const Collapsable = () => {
                     <span className="text-red-500">This field is required</span>
                   )}
                 </div>
-                <div className="md:w-2/3">
+                <div>
                   <label
                     className="mb-1 block pr-4 font-bold text-black md:mb-0"
                     htmlFor="surname-name"
@@ -102,7 +102,7 @@ const Collapsable = () => {
                     <span className="text-red-500">This field is required</span>
                   )}
                 </div>
-                <div className="md:w-3/3">
+                <div>
                   <label
                     className="mb-1 block pr-4 font-bold text-black md:mb-0"
                     htmlFor="email-address"
@@ -158,7 +158,7 @@ const Collapsable = () => {
           </summary>
           <div className="p-4">
             <form>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-2  w-7/12">
                 <div className="md:w-1/3">
                   <label
                     className="mb-1 block w-64 pr-4 font-bold text-black md:mb-0"
