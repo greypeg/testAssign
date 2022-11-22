@@ -59,7 +59,6 @@ const Collapsable = () => {
     setSection(2);
   };
   const onSubmit3: SubmitHandler<FormValues> = (data: FormValues) => {
-    console.log("hiii", data);
     mutation.mutate({
       name: userData?.name,
       surname: userData?.surname,
@@ -85,7 +84,6 @@ const Collapsable = () => {
     if (section === sectionNumber) return true;
     return false;
   };
-  console.log(userData);
   return (
     <div>
       <div className="container rounded-lg bg-white py-1 px-1 shadow-xl">
