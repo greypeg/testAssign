@@ -1,9 +1,7 @@
 import { z, ZodLazy } from "zod";
 import { initTRPC } from '@trpc/server'
 import { router, publicProcedure } from "../trpc";
-
 export const t = initTRPC?.create()
-
 export const exampleRouter = router({
   submitData: t
   .procedure
@@ -16,13 +14,16 @@ export const exampleRouter = router({
     })
   )
   .mutation(({ input }) => {
-      // Here some login stuff would happen
-      return {
-        user: {
-          name: input.name,
-          email: input.email,
-          surname: input.surname
-        },
-      };
+      resolve:async (input: any, ctx:any) => {
+        const user = await ctx.prisma.user.create({
+          data: {
+            email: 'elsa@prisma.io',
+            name: 'Elsa Prisma',
+          },
+        })
+        const users = ctx.prisma.user.findAll();
+        console.log(users)
+        return user;
+      }
      })
 })

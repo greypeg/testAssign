@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { trpc } from "../../utils/trpc";
+import { PrismaClient } from "@prisma/client";
 
 type FormValues = {
   firstname: string;
@@ -42,7 +43,7 @@ const Collapsable = () => {
     <div>
       <div className="container rounded-lg bg-white py-4 px-4 shadow-xl">
         <details
-          className="group mb-2 rounded-xl rounded bg-white bg-[#DEDEDE] shadow"
+          className="group mb-2 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(0)}
           id="0"
         >
@@ -57,7 +58,7 @@ const Collapsable = () => {
               else setSection(0);
             }}
           >
-            <h3 className="flex flex-1 rounded-lg bg-yellow-400 p-4 font-semibold text-white">
+            <h3 className="flex flex-1 rounded-xl bg-yellow-400 p-4 font-semibold text-white">
               Step 1: Your details
             </h3>
           </summary>
@@ -65,7 +66,7 @@ const Collapsable = () => {
             {/*section 1 */}
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2 gap-0 w-7/12">
+              <div className="grid w-7/12 grid-cols-2 gap-0">
                 <div>
                   <label
                     className="mb-1 ml-1 block pr-4 font-semibold text-black md:mb-0"
@@ -74,7 +75,7 @@ const Collapsable = () => {
                     First Name
                   </label>
                   <input
-                    className="w-fit appearance-none rounded-xl rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="inline-full-name"
                     type="text"
                     {...register("firstname", { required: true })}
@@ -92,7 +93,7 @@ const Collapsable = () => {
                     Surname
                   </label>
                   <input
-                    className="w-fit appearance-none rounded-xl rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="surname-name"
                     type="text"
                     {...register("surname", { required: true })}
@@ -110,7 +111,7 @@ const Collapsable = () => {
                     Email Address:
                   </label>
                   <input
-                    className="w-fit appearance-none rounded-xl rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="email-address"
                     type="email"
                     {...register("email", { required: true })}
@@ -136,8 +137,8 @@ const Collapsable = () => {
             </form>
           </div>
         </details>
-        <details
-          className="group mb-2 rounded-xl rounded bg-white bg-[#DEDEDE] shadow"
+     <details
+          className="group mb-2 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(1)}
           id="1"
         >
@@ -158,7 +159,7 @@ const Collapsable = () => {
           </summary>
           <div className="p-4">
             <form>
-              <div className="grid grid-cols-2  w-7/12">
+              <div className="grid w-7/12  grid-cols-2">
                 <div className="md:w-1/3">
                   <label
                     className="mb-1 ml-1 block w-64 pr-4 font-semibold text-black md:mb-0"
@@ -167,7 +168,7 @@ const Collapsable = () => {
                     Telephone Number
                   </label>
                   <input
-                    className="w-fit appearance-none rounded-xl rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:outline-none"
                     id="telephone"
                     type="tel"
                     {...register("telephone", { required: true })}
@@ -179,14 +180,14 @@ const Collapsable = () => {
                 </div>
                 <div className="md:w-2/3">
                   <label
-                    className="mb-1 ml-1 block ml-1 font-semibold pr-4 text-black md:mb-0"
+                    className="mb-1 ml-1 ml-1 block pr-4 font-semibold text-black md:mb-0"
                     htmlFor="gender"
                   >
                     Gender
                   </label>
                   <select
                     {...register("gender")}
-                    className="w-fite rounded-xl rounded border-2 border-b-4 border-gray-200 border-gray-500 bg-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
+                    className="w-fite rounded-xl border-2 border-b-4 border-gray-200 border-gray-500 bg-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
                   >
                     <option value="" disabled selected hidden>
                       Select Gender
@@ -206,7 +207,7 @@ const Collapsable = () => {
                   <select
                     id="month"
                     name="month"
-                    className="w-12 appearance-none focus:w-24 rounded-xl rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:outline-none"
+                    className="w-12 appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:w-24 focus:outline-none"
                   >
                     <option value="" selected disabled hidden></option>
                     <option value="01">January</option>
@@ -225,7 +226,7 @@ const Collapsable = () => {
                   <select
                     id="day"
                     name="day"
-                    className="mx-2 w-12 focus:w-24 appearance-none rounded-xl rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:outline-none"
+                    className="mx-2 w-12 appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:w-24 focus:outline-none"
                   >
                     <option value="" selected disabled hidden></option>
                     <option value="01">1</option>
@@ -261,7 +262,7 @@ const Collapsable = () => {
                     <option value="31">31</option>
                   </select>
                   <input
-                    className="w-12 appearance-none focus:w-24 rounded-xl rounded border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:outline-none"
+                    className="w-12 appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:w-24 focus:outline-none"
                     type="number"
                     min="1900"
                     max="2099"
@@ -285,7 +286,7 @@ const Collapsable = () => {
         </details>
 
         <details
-          className="group mb-2 rounded-xl rounded bg-white bg-[#DEDEDE] shadow"
+          className="group mb-2 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(2)}
           id="2"
         >
@@ -318,7 +319,7 @@ const Collapsable = () => {
                     id="comments"
                     rows={4}
                     cols={50}
-                    className="rounded-xl"
+                    className="rounded-xl resize-none"
                     {...register("comments", { required: true })}
                   ></textarea>
                 </div>
