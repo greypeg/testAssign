@@ -40,9 +40,9 @@ const Collapsable = () => {
 
   return (
     <div>
-      <div className="container rounded-lg bg-white py-4 px-4 shadow-xl">
+      <div className="container rounded-lg bg-white py-1 px-1 shadow-xl">
         <details
-          className="group mb-2 rounded-xl bg-white bg-[#DEDEDE] shadow"
+          className="group mb-1 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(0)}
           id="0"
         >
@@ -137,7 +137,7 @@ const Collapsable = () => {
           </div>
         </details>
      <details
-          className="group mb-2 rounded-xl bg-white bg-[#DEDEDE] shadow"
+          className="group mb-1 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(1)}
           id="1"
         >
@@ -285,7 +285,7 @@ const Collapsable = () => {
         </details>
 
         <details
-          className="group mb-2 rounded-xl bg-white bg-[#DEDEDE] shadow"
+          className="group mb-0 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(2)}
           id="2"
         >
