@@ -1,3 +1,7 @@
+First clone the project:
+
+git clone https://github.com/greypeg/testAssign.git
+
 1)How to run the project:
 
 Commands:
@@ -11,8 +15,9 @@ npm run dev
 in your browser paste this: http://localhost:3000/
 
 2)To see if users are inside the db:
+open another terminal
 
-inside the project folder (test) run this command:
+inside the project folder (folder name: test) run this command:
 
 npx prisma studio
 
