@@ -13,6 +13,10 @@ export const usersRouter = router({
         name: z.string(),
         surname: z.string(),
         email: z.string(),
+        telephone: z.string(),
+        gender: z.string(),
+        dateOfBirth: z.string(),
+        comments: z.string(),
       })
     )
     .mutation(({ input, ctx }) => {

@@ -5,15 +5,27 @@ import { useState } from "react";
 import { trpc } from "../../utils/trpc";
 
 type FormValues = {
-  firstname: string;
+  name: string;
   surname: string;
   email: string;
-  birthday: string;
+  dateOfBirth: string;
   gender: string;
   telephone: string;
   comments: string;
+  month?: string;
+  day?: string;
+  year?: string;
 };
 const Collapsable = () => {
+  const [userData, setUserData] = useState<FormValues>({
+    name: "",
+    surname: "",
+    email: "",
+    dateOfBirth: "",
+    gender: "",
+    telephone: "",
+    comments: "",
+  });
   const mutation = trpc.users.submitData.useMutation();
   const {
     register,
@@ -22,22 +34,58 @@ const Collapsable = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+  const {
+    register: register2,
+    formState: { errors: errors2 },
+    handleSubmit: handleSubmit2,
+  } = useForm<FormValues>();
+
+  const [section, setSection] = useState(0);
+  const {
+    register: register3,
+    formState: { errors: errors3 },
+    handleSubmit: handleSubmit3,
+  } = useForm<FormValues>();
+
+  const onSubmit2: SubmitHandler<FormValues> = (data: FormValues) => {
+    const birth = data.year + "-" + data.month + "-" + data.day;
+    const d = new Date(birth);
+    setUserData({
+      ...userData,
+      telephone: data.telephone,
+      gender: data.gender,
+      dateOfBirth: d.toString(),
+    });
+    setSection(2);
+  };
+  const onSubmit3: SubmitHandler<FormValues> = (data: FormValues) => {
+    console.log("hiii", data);
     mutation.mutate({
-      name: data.firstname,
+      name: userData?.name,
+      surname: userData?.surname,
+      email: userData?.email,
+      dateOfBirth: userData?.dateOfBirth,
+      telephone: userData?.telephone,
+      comments: data.comments,
+      gender: userData?.gender,
+    });
+    setSection(0);
+  };
+  const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+    setUserData({
+      ...userData,
+      name: data.name,
       surname: data.surname,
       email: data.email,
     });
-    console.log(data);
+    setSection(1);
   };
-
-  const [section, setSection] = useState(0);
 
   const isOpen = (sectionNumber: number) => {
     if (section === sectionNumber) return true;
     return false;
   };
-
+  console.log(userData);
   return (
     <div>
       <div className="container rounded-lg bg-white py-1 px-1 shadow-xl">
@@ -57,7 +105,7 @@ const Collapsable = () => {
               else setSection(0);
             }}
           >
-            <h3 className="flex flex-1 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] rounded-xl bg-[#F5B605] p-4 font-semibold text-white">
+            <h3 className="flex flex-1 rounded-xl bg-[#F5B605] p-4 font-semibold text-white [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
               Step 1: Your details
             </h3>
           </summary>
@@ -74,13 +122,13 @@ const Collapsable = () => {
                     First Name
                   </label>
                   <input
-                    className="w-fit shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="inline-full-name"
                     type="text"
-                    {...register("firstname", { required: true })}
+                    {...register("name", { required: true })}
                   />
                   <br></br>
-                  {errors.firstname && (
+                  {errors.name && (
                     <span className="text-red-500">This field is required</span>
                   )}
                 </div>
@@ -92,7 +140,7 @@ const Collapsable = () => {
                     Surname
                   </label>
                   <input
-                    className="w-fit shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="surname-name"
                     type="text"
                     {...register("surname", { required: true })}
@@ -110,7 +158,7 @@ const Collapsable = () => {
                     Email Address:
                   </label>
                   <input
-                    className="w-fit shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] focus:border-purple-500 focus:bg-white focus:outline-none"
                     id="email-address"
                     type="email"
                     {...register("email", { required: true })}
@@ -136,7 +184,7 @@ const Collapsable = () => {
             </form>
           </div>
         </details>
-     {/*<details
+        <details
           className="group mb-1 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(1)}
           id="1"
@@ -152,12 +200,12 @@ const Collapsable = () => {
               else setSection(1);
             }}
           >
-            <h3 className="flex flex-1 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] rounded-lg bg-[#F5B605] p-4 font-semibold  text-white">
+            <h3 className="flex flex-1 rounded-lg bg-[#F5B605] p-4 font-semibold text-white  [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
               Step 2: More comments
             </h3>
           </summary>
           <div className="p-4">
-            <form>
+            <form onSubmit={handleSubmit2(onSubmit2)}>
               <div className="grid w-7/12  grid-cols-2">
                 <div className="md:w-1/3">
                   <label
@@ -167,10 +215,10 @@ const Collapsable = () => {
                     Telephone Number
                   </label>
                   <input
-                    className="w-fit shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:outline-none"
+                    className="w-fit appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] focus:border-purple-500 focus:outline-none"
                     id="telephone"
                     type="tel"
-                    {...register("telephone", { required: true })}
+                    {...register2("telephone", { required: true })}
                   />
                   <br></br>
                   {errors.email && (
@@ -185,8 +233,8 @@ const Collapsable = () => {
                     Gender
                   </label>
                   <select
-                    {...register("gender")}
-                    className="w-fite shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] rounded-xl border-2 border-b-2 border-gray-200 border-gray-500 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
+                    {...register2("gender")}
+                    className="w-fite rounded-xl border-2 border-b-2 border-gray-200 border-gray-500 bg-gray-200 py-2 px-4 leading-tight text-gray-700 shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] focus:bg-white focus:outline-none"
                   >
                     <option value="" disabled selected hidden>
                       Select Gender
@@ -204,9 +252,10 @@ const Collapsable = () => {
                     Date of birth
                   </label>
                   <select
+                    {...register2("month")}
                     id="month"
                     name="month"
-                    className="w-12 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:w-24 focus:outline-none"
+                    className="w-12 appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] focus:w-24 focus:outline-none"
                   >
                     <option value="" selected disabled hidden></option>
                     <option value="01">January</option>
@@ -223,9 +272,10 @@ const Collapsable = () => {
                     <option value="12">December</option>
                   </select>
                   <select
+                    {...register2("day")}
                     id="day"
                     name="day"
-                    className="mx-2 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] w-12 appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:w-24 focus:outline-none"
+                    className="mx-2 w-12 appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] focus:w-24 focus:outline-none"
                   >
                     <option value="" selected disabled hidden></option>
                     <option value="01">1</option>
@@ -261,7 +311,8 @@ const Collapsable = () => {
                     <option value="31">31</option>
                   </select>
                   <input
-                    className="w-12 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 focus:w-24 focus:outline-none"
+                    {...register2("year")}
+                    className="w-12 appearance-none rounded-xl border-2 border-gray-200 bg-white py-2 px-4 leading-tight text-gray-700 shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] focus:w-24 focus:outline-none"
                     type="number"
                     min="1900"
                     max="2099"
@@ -300,12 +351,12 @@ const Collapsable = () => {
               else setSection(2);
             }}
           >
-            <h3 className="flex flex-1 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] rounded-xl bg-[#F5B605] p-4 font-semibold  text-white">
+            <h3 className="flex flex-1 rounded-xl bg-[#F5B605] p-4 font-semibold text-white  [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
               Step 3: Final comments
             </h3>
           </summary>
           <div className="p-4">
-            <form>
+            <form onSubmit={handleSubmit3(onSubmit3)}>
               <div className="grid grid-cols-2">
                 <div className="">
                   <label
@@ -315,11 +366,12 @@ const Collapsable = () => {
                     Comments
                   </label>
                   <textarea
+                    {...register3("comments")}
                     id="comments"
                     rows={4}
                     cols={50}
-                    className="shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)] rounded-xl resize-none"
-                    {...register("comments", { required: true })}
+                    className="resize-none rounded-xl shadow-[inset_1px_1px_4px_rgba(0,0,0,0.6)]"
+                    {...register3("comments", { required: true })}
                   ></textarea>
                 </div>
                 <div className="col-span-2 col-end-7 row-end-3">
@@ -333,7 +385,7 @@ const Collapsable = () => {
               </div>
             </form>
           </div>
-          </details>*/}
+        </details>
       </div>
     </div>
   );
