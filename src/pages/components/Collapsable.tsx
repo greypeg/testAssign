@@ -14,7 +14,7 @@ type FormValues = {
   comments: string;
 };
 const Collapsable = () => {
-  const mutation = trpc.example.submitData.useMutation();
+  const mutation = trpc.users.submitData.useMutation();
   const {
     register,
     handleSubmit,
@@ -136,7 +136,7 @@ const Collapsable = () => {
             </form>
           </div>
         </details>
-     <details
+     {/*<details
           className="group mb-1 rounded-xl bg-white bg-[#DEDEDE] shadow"
           open={isOpen(1)}
           id="1"
@@ -333,7 +333,7 @@ const Collapsable = () => {
               </div>
             </form>
           </div>
-        </details>
+          </details>*/}
       </div>
     </div>
   );
