@@ -385,7 +385,11 @@ const Collapsable = () => {
           </div>
         </details>
       </div>
+      {mutation.isError ? (
+            <div className="text-black font-bold">An error occurred: {mutation.error.message}</div>
+          ) : null}
     </div>
+    
   );
 };
 
