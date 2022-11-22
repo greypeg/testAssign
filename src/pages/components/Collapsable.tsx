@@ -300,7 +300,7 @@ const Collapsable = () => {
               else setSection(2);
             }}
           >
-            <h3 className="flex flex-1 rounded-xl bg-[#F5B605 p-4 font-semibold  text-white">
+            <h3 className="flex flex-1 rounded-xl bg-[#F5B605] p-4 font-semibold  text-white">
               Step 3: Final comments
             </h3>
           </summary>
