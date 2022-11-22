@@ -57,7 +57,7 @@ const Collapsable = () => {
               else setSection(0);
             }}
           >
-            <h3 className="flex flex-1 rounded-xl bg-[#F5B605] p-4 font-semibold text-white">
+            <h3 className="flex flex-1 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] rounded-xl bg-[#F5B605] p-4 font-semibold text-white">
               Step 1: Your details
             </h3>
           </summary>
@@ -152,7 +152,7 @@ const Collapsable = () => {
               else setSection(1);
             }}
           >
-            <h3 className="flex flex-1 rounded-lg bg-[#F5B605] p-4 font-semibold  text-white">
+            <h3 className="flex flex-1 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] rounded-lg bg-[#F5B605] p-4 font-semibold  text-white">
               Step 2: More comments
             </h3>
           </summary>
@@ -300,7 +300,7 @@ const Collapsable = () => {
               else setSection(2);
             }}
           >
-            <h3 className="flex flex-1 rounded-xl bg-[#F5B605] p-4 font-semibold  text-white">
+            <h3 className="flex flex-1 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] rounded-xl bg-[#F5B605] p-4 font-semibold  text-white">
               Step 3: Final comments
             </h3>
           </summary>
