@@ -232,7 +232,7 @@ const Collapsable = () => {
                   </label>
                   <select
                     {...register2("gender")}
-                    className="w-fite rounded-xl border-2 border-b-2 border-gray-200 border-gray-500 bg-gray-200 py-2 px-4 leading-tight text-gray-700 shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] focus:bg-white focus:outline-none"
+                    className="w-fite rounded-xl border-2 border-b-2 border-gray-200 border-gray-500 bg-gray-200 py-2 px-4 leading-tight text-gray-700 shadow-[inset_0px_0px_7px_0_rgba(0,0,0,0.6)] focus:bg-white focus:outline-none"
                   >
                     <option value="" disabled selected hidden>
                       Select Gender
