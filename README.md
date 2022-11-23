@@ -30,6 +30,8 @@ Notes:
 
 you can proceed to any step using the step headers but the data in the forms will only update if you click the Next button on the right corner before proceeding to another step.
 
+The User will be created (the data will be submitted to the db) when you hit the Next button on the last section ("Final comments") section.
+
 If you are not familiar with the different technologies used in this project, please refer to the respective docs.
 
 - [Next-Auth.js](https://next-auth.js.org)
